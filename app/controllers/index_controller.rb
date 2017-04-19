@@ -16,4 +16,13 @@ class IndexController < ApplicationController
       render :file
     end
   end
+
+  def delete
+    if File.directory?(params[:path])
+      FileUtils.rm_rf(params[:path])
+    else
+      FileUtils.rm(params[:path])
+    end
+    head 204
+  end
 end

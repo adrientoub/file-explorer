@@ -4,20 +4,27 @@
       <th>Filename</th>
       <th>Size</th>
       <th>Date</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
     <% @directory.each do |entry| %>
     <tr>
-      <td><a class="<%= File.file?("#{@path}#{entry}") ? 'file': 'directory' %>"
-        href="/<%= "#{@path}#{entry}" %>">
+      <% real_path = "#{@path}#{entry}" %>
+      <td><a class="<%= File.file?(real_path) ? 'file': 'directory' %>"
+        href="/<%= real_path %>">
         <%= entry %>
       </a></td>
       <td>
-        <%= number_to_human_size File.size("#{@path}#{entry}") %>
+        <%= number_to_human_size File.size(real_path) rescue '-' %>
       </td>
       <td>
-        <%= File.mtime("#{@path}#{entry}").to_formatted_s(:short) %>
+        <%= File.mtime(real_path).to_formatted_s(:short) rescue '-' %>
+      </td>
+      <td>
+        <a href='' onclick="Index.delete('<%= real_path %>')">
+          Delete
+        </a>
       </td>
     </tr>
     <% end %>
