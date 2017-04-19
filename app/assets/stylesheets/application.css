@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+.file {
+  color: turquoise;
+}
+.directory {
+  color: blue;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}

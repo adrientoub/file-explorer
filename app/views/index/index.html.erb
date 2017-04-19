@@ -1,0 +1,8 @@
+<ul>
+  <% @directory.each do |entry| %>
+    <li><a class="<%= File.file?("#{@path}#{entry}") ? 'file': 'directory' %>"
+      href="/<%= "#{@path}#{entry}" %>">
+      <%= entry %>
+    </a></li>
+  <% end %>
+</ul>
