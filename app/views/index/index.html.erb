@@ -1,8 +1,25 @@
-<ul>
-  <% @directory.each do |entry| %>
-    <li><a class="<%= File.file?("#{@path}#{entry}") ? 'file': 'directory' %>"
-      href="/<%= "#{@path}#{entry}" %>">
-      <%= entry %>
-    </a></li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Filename</th>
+      <th>Size</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @directory.each do |entry| %>
+    <tr>
+      <td><a class="<%= File.file?("#{@path}#{entry}") ? 'file': 'directory' %>"
+        href="/<%= "#{@path}#{entry}" %>">
+        <%= entry %>
+      </a></td>
+      <td>
+        <%= number_to_human_size File.size("#{@path}#{entry}") %>
+      </td>
+      <td>
+        <%= File.mtime("#{@path}#{entry}").to_formatted_s(:short) %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
