@@ -1,3 +1,5 @@
+<h1>/<%= @path %></h1>
+
 <table>
   <thead>
     <tr>
@@ -10,21 +12,21 @@
   <tbody>
     <% @directory.each do |entry| %>
     <tr>
-      <% real_path = "#{@path}#{entry}" %>
-      <td><a class="<%= File.file?(real_path) ? 'file': 'directory' %>"
-        href="/<%= real_path %>">
-        <%= entry %>
-      </a></td>
+      <% real_path = "#{@path}#{entry}"
+         is_file = File.file?(real_path)
+         size = is_file ? (number_to_human_size File.size(real_path) rescue '-'): '-'
+      %>
       <td>
-        <%= number_to_human_size File.size(real_path) rescue '-' %>
+        <%= link_to "#{entry}#{is_file ? '': '/'}", "/#{real_path}", class: is_file ? 'file': 'directory' %>
+      </td>
+      <td>
+        <%= size %>
       </td>
       <td>
         <%= File.mtime(real_path).to_formatted_s(:short) rescue '-' %>
       </td>
       <td>
-        <a href='' onclick="Index.delete('<%= real_path %>')">
-          Delete
-        </a>
+        <%= link_to 'Delete', "/#{real_path}", method: :delete, data: { confirm: "Are you sure you want to delete `#{real_path}`?" } %>
       </td>
     </tr>
     <% end %>
