@@ -1,4 +1,4 @@
-<h1>/<%= @path %></h1>
+<h1><%= @absolute_path %></h1>
 
 <table>
   <thead>
@@ -12,21 +12,21 @@
   <tbody>
     <% @directory.each do |entry| %>
     <tr>
-      <% real_path = "#{@path}#{entry}"
-         is_file = File.file?(real_path)
-         size = is_file ? (number_to_human_size File.size(real_path) rescue '-'): '-'
+      <% real_path_relative = "#{@path}#{entry}"
+         real_path_absolute = "#{@absolute_path}/#{entry}"
+         is_file = File.file?(real_path_absolute)
       %>
       <td>
-        <%= link_to "#{entry}#{is_file ? '': '/'}", "/#{real_path}", class: is_file ? 'file': 'directory' %>
+        <%= link_to "#{entry}#{is_file ? '': '/'}", "/#{real_path_relative}", class: is_file ? 'file': 'directory' %>
       </td>
       <td>
-        <%= size %>
+        <%= is_file ? (number_to_human_size File.size(real_path_absolute) rescue '-'): '-' %>
       </td>
       <td>
-        <%= File.mtime(real_path).to_formatted_s(:short) rescue '-' %>
+        <%= File.mtime(real_path_absolute).to_formatted_s(:short) rescue '-' %>
       </td>
       <td>
-        <%= link_to 'Delete', "/#{real_path}", method: :delete, data: { confirm: "Are you sure you want to delete `#{real_path}`?" } %>
+        <%= link_to 'Delete', "/#{real_path_relative}", method: :delete, data: { confirm: "Are you sure you want to delete `#{real_path_absolute}`?" } %>
       </td>
     </tr>
     <% end %>
