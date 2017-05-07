@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @directory.each do |entry| %>
+    <% @directory.sort.each do |entry| %>
     <tr>
       <% real_path_relative = "#{@path}#{entry}"
          real_path_absolute = "#{@absolute_path}/#{entry}"
