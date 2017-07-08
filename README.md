@@ -1,24 +1,48 @@
-# README
+# File Explorer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
 
-Things you may want to cover:
+This project offers a very simple file explorer to see files in a directory, it
+allows to display small files and download bigger ones. The limit between small
+and big is currently set to 250 kB.
 
-* Ruby version
+This also allows to delete files and directories simply by clicking a delete
+button.
 
-* System dependencies
+This project was quickly created to simplify the management of files on a web
+server.
 
-* Configuration
+## Security
 
-* Database creation
+You should protect the access to this application at least by adding a
+Basic Auth in your Apache or Nginx configuration, indeed there is no permission
+system implemented and anyone having access to this could delete all your
+files easily.
 
-* Database initialization
+## Setup
 
-* How to run the test suite
+To configure and launch it you need a few things:
 
-* Services (job queues, cache servers, search engines, etc.)
+* Install a recent ruby version on your computer
+* `gem install bundler`
+* `bundle install`
 
-* Deployment instructions
+After that you should be all done and ready to work.
 
-* ...
+To launch the Rails server you can just use:
+
+```ruby
+bundle exec rails s -b0.0.0.0
+```
+
+You can also specify the folder in which you want it to be launched (defaults
+to the current directory) by setting the BASE\_DIRECTORY environment variable
+before launching the server.
+
+```ruby
+BASE_DIRECTORY=PATH_TO_YOUR_DIRECTORY bundle exec rails s -b0.0.0.0
+```
+
+## Tests
+
+There are no tests for this project currently because of its simplicity.
