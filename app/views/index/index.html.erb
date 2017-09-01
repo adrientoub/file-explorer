@@ -12,7 +12,7 @@
   <tbody>
     <% @directory.sort.each do |entry| %>
     <tr>
-      <% real_path_relative = "#{@path}#{entry}"
+      <% real_path_relative = CGI.escape("#{@path}#{entry}").gsub('%2F', '/')
          real_path_absolute = "#{@absolute_path}/#{entry}"
          is_file = File.file?(real_path_absolute)
       %>
