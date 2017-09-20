@@ -10,23 +10,19 @@
     </tr>
   </thead>
   <tbody>
-    <% @directory.sort.each do |entry| %>
+    <% @directory.each do |entry| %>
     <tr>
-      <% real_path_relative = CGI.escape("#{@path}#{entry}").gsub('%2F', '/')
-         real_path_absolute = "#{@absolute_path}/#{entry}"
-         is_file = File.file?(real_path_absolute)
-      %>
       <td>
-        <%= link_to "#{entry}#{is_file ? '': '/'}", "/#{real_path_relative}", class: is_file ? 'file': 'directory' %>
+        <%= link_to "#{entry[:entry]}", "/#{entry[:relative]}", class: entry[:type].to_s %>
       </td>
       <td>
-        <%= is_file ? (number_to_human_size File.size(real_path_absolute) rescue '-'): '-' %>
+        <%= entry[:size] %>
       </td>
       <td>
-        <%= File.mtime(real_path_absolute).to_formatted_s(:short) rescue '-' %>
+        <%= entry[:date] %>
       </td>
       <td>
-        <%= link_to 'Delete', "/#{real_path_relative}", method: :delete, data: { confirm: "Are you sure you want to delete `#{real_path_absolute}`?" } %>
+        <%= link_to 'Delete', "/#{entry[:relative]}", method: :delete, data: { confirm: "Are you sure you want to delete `#{entry[:absolute]}`?" } %>
       </td>
     </tr>
     <% end %>
