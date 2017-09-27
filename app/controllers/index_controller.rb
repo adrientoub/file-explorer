@@ -19,7 +19,7 @@ class IndexController < ApplicationController
         send_file absolute_path
       else
         @file = File.read(absolute_path)
-        render :file
+        render :file, formats: :html
       end
     end
   end
