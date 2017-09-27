@@ -1,6 +1,8 @@
 class IndexController < ApplicationController
   BASE_DIRECTORY = ENV['BASE_DIRECTORY'] || '.'
 
+  include ActionView::Helpers::NumberHelper
+
   def index
     populate_directory(BASE_DIRECTORY, '')
     @absolute_path = BASE_DIRECTORY
