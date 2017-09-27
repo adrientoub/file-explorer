@@ -35,6 +35,12 @@ class IndexController < ApplicationController
 
   private
 
+  def my_escape(string)
+    string.gsub(/([^ a-zA-Z0-9_.-]+)/) do
+      '%' + $1.unpack('H2' * $1.bytesize).join('%').upcase
+    end
+  end
+
   def populate_directory(current_directory, current_url)
     directory = Dir.entries(current_directory)
     @directory = directory.map do |file|
@@ -46,7 +52,7 @@ class IndexController < ApplicationController
         size: (is_file ? (number_to_human_size stat.size rescue '-'): '-'),
         type: (is_file ? :file : :directory),
         date: (stat.mtime.to_formatted_s(:short) rescue '-'),
-        relative: CGI.escape("#{current_url}#{file}").gsub('%2F', '/'),
+        relative: my_escape("#{current_url}#{file}").gsub('%2F', '/'),
         entry: "#{file}#{is_file ? '': '/'}",
         absolute: real_path_absolute
       }
