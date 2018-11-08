@@ -13,15 +13,26 @@
  *= require_tree .
  *= require_self
  */
-.file {
-  color: turquoise;
+ body {
+  background-color: #2A2A2A;
+  color: rgba(249, 249, 250, 0.8);
 }
-.directory {
-  color: blue;
+.file {
+  color: rgb(64, 224, 208);
+}
+a.file:visited {
+  color: rgb(58, 148, 139);
+}
+a.delete, a.delete:visited {
+  color: rgb(223, 132, 136);
 }
 a {
   text-decoration: none;
+  color: rgb(167, 167, 255);
 }
 a:hover {
   text-decoration: underline;
+}
+a:visited {
+  color: rgb(110, 110, 170);
 }

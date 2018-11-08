@@ -22,7 +22,9 @@
         <%= entry[:date] %>
       </td>
       <td>
-        <%= link_to 'Delete', "/#{entry[:relative]}", method: :delete, data: { confirm: "Are you sure you want to delete `#{entry[:absolute]}`?" } %>
+        <% if entry[:entry] != './' && entry[:entry] != '../' %>
+          <%= link_to 'Delete', "/#{entry[:relative]}", method: :delete, class: 'delete', data: { confirm: "Are you sure you want to delete `#{entry[:absolute]}`?" } %>
+        <% end %>
       </td>
     </tr>
     <% end %>
