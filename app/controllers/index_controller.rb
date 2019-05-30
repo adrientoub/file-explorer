@@ -9,7 +9,7 @@ class IndexController < ApplicationController
   end
 
   def path
-    absolute_path = check_path(params[:path])
+    absolute_path = check_path_exist(params[:path])
 
     if File.directory?(absolute_path)
       populate_directory(absolute_path, "#{params[:path]}/")
@@ -25,7 +25,7 @@ class IndexController < ApplicationController
   end
 
   def delete
-    absolute_path = check_path(params[:path])
+    absolute_path = check_path_exist(params[:path])
 
     if File.directory?(absolute_path)
       FileUtils.rm_rf(absolute_path)
@@ -33,6 +33,20 @@ class IndexController < ApplicationController
       FileUtils.rm(absolute_path)
     end
     head 204
+  end
+
+  def rename
+    absolute_path = check_path_exist(params[:path])
+    new_path = safe_expand_path(params[:new_name])
+    if File.exists?(new_path)
+      head 403
+    else
+      parent = new_path.split('/')[0..-2].join('/')
+      FileUtils.mkdir_p(parent)
+      FileUtils.mv(absolute_path, new_path)
+
+      head 204
+    end
   end
 
   private
@@ -61,14 +75,19 @@ class IndexController < ApplicationController
     end.sort_by { |entry| "#{entry[:type]}#{entry[:relative]}" }
   end
 
-  def check_path(path)
+  def safe_expand_path(path)
     current_directory = File.expand_path(BASE_DIRECTORY)
-    @absolute_path = File.expand_path(path, BASE_DIRECTORY)
-    raise ActionController::RoutingError, 'Not Found' unless File.exists?(@absolute_path)
+    tested_path = File.expand_path(path, BASE_DIRECTORY)
 
-    unless @absolute_path.starts_with?(current_directory)
+    unless tested_path.starts_with?(current_directory)
       raise ArgumentError, 'Should not be parent of root'
     end
+    tested_path
+  end
+
+  def check_path_exist(path)
+    @absolute_path = safe_expand_path(path)
+    raise ActionController::RoutingError, 'Not Found' unless File.exists?(@absolute_path)
     @absolute_path
   end
 end

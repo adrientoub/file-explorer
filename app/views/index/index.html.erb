@@ -6,6 +6,7 @@
       <th>Filename</th>
       <th>Size</th>
       <th>Date</th>
+      <th>Rename</th>
       <th>Delete</th>
     </tr>
   </thead>
@@ -20,6 +21,11 @@
       </td>
       <td>
         <%= entry[:date] %>
+      </td>
+      <td>
+        <% if entry[:entry] != './' && entry[:entry] != '../' %>
+          <%= link_to 'Rename', '#', class: 'delete', onclick: "rename('#{entry[:relative]}')" %>
+        <% end %>
       </td>
       <td>
         <% if entry[:entry] != './' && entry[:entry] != '../' %>

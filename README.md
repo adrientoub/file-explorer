@@ -6,8 +6,8 @@ This project offers a very simple file explorer to see files in a directory, it
 allows to display small files and download bigger ones. The limit between small
 and big is currently set to 250 kB.
 
-This also allows to delete files and directories simply by clicking a delete
-button.
+This also allows to rename and delete files and directories simply by clicking
+a button.
 
 This project was quickly created to simplify the management of files on a web
 server.
