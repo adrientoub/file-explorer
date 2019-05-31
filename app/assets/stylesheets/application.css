@@ -41,8 +41,8 @@ th, td {
   width: 100%;
   white-space: normal;
 }
-.filename {
-  padding: 0 6px;
+.fa {
+  padding: 0 6px 0 0;
 }
 /* Make the whole cell clickable */
 td a {

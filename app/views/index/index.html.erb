@@ -25,12 +25,16 @@
       </td>
       <td>
         <% if entry[:entry] != './' && entry[:entry] != '../' %>
-          <%= link_to 'Rename', '#', class: 'delete', onclick: "rename('#{entry[:relative]}')" %>
+          <%= link_to '#', class: 'delete', onclick: "rename('#{entry[:relative]}')" do %>
+            <%= fa_icon 'i-cursor' %> Rename
+          <% end %>
         <% end %>
       </td>
       <td>
         <% if entry[:entry] != './' && entry[:entry] != '../' %>
-          <%= link_to 'Delete', "/#{entry[:relative]}", method: :delete, class: 'delete', data: { confirm: "Are you sure you want to delete `#{entry[:absolute]}`?" } %>
+          <%= link_to "/#{entry[:relative]}", method: :delete, class: 'delete', data: { confirm: "Are you sure you want to delete `#{entry[:absolute]}`?" } do %>
+            <%= fa_icon 'trash' %> Delete
+          <% end %>
         <% end %>
       </td>
     </tr>
