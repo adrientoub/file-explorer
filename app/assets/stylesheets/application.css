@@ -27,6 +27,9 @@ th, td {
   padding: 3px 12px;
   border: 1px solid;
 }
+.date {
+  font-family: 'Courier New', Courier, monospace;
+}
 /* Make the whole cell clickable */
 td a {
   display: block;
