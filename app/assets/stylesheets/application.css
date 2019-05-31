@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 /* Common */
 a {
@@ -30,7 +31,7 @@ th {
   font-size: 14pt;
 }
 th, td {
-  padding: 3px 12px;
+  padding: 4px 12px;
   border: 1px solid;
 }
 .date {
@@ -40,6 +41,9 @@ th, td {
   width: 100%;
   white-space: normal;
 }
+.filename {
+  padding: 0 6px;
+}
 /* Make the whole cell clickable */
 td a {
   display: block;
@@ -47,22 +51,19 @@ td a {
 }
 
 /* Light mode: */
-.file {
-  color: rgb(47, 121, 165);
-}
-a.file:visited {
-  color: rgb(179, 84, 195);
-}
 a.delete,
 a.delete:visited {
   color: rgb(223, 132, 136);
 }
+.fa-folder {
+  color: rgba(3,47,98,.5);
+}
+.fa-file {
+  color: rgb(155, 155, 155);
+}
 th {
   background-color: rgb(76, 102, 175);
   color: white;
-}
-tr:nth-child(even) {
-  background-color: #f2f2f2;
 }
 tr:hover {
   background-color: #f5f5f5;
@@ -76,29 +77,23 @@ th, td {
     background-color: black;
     color: rgba(249, 249, 250, 0.8);
   }
-  .file {
-    color: rgb(26, 168, 245);
+  .fa-folder {
+    color: rgb(2, 69, 146);
   }
-  a.file:visited {
-    color: rgb(159, 210, 238);
+  .fa-file {
+    color: rgb(177, 177, 177);
+  }
+  a .filename {
+    color: rgb(47, 121, 165);
   }
   a.delete,
   a.delete:visited {
     color: rgb(223, 132, 136);
-  }
-  tr:nth-child(even) {
-    background-color: #202020;
   }
   tr:hover {
     background-color: #3b3b3b;
   }
   th, td {
     border-color: rgb(138, 138, 138);
-  }
-  a {
-    color: rgb(200, 118, 255);
-  }
-  a:visited {
-    color: rgb(158, 50, 230);
   }
 }

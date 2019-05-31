@@ -12,7 +12,10 @@
     <% @directory.each do |entry| %>
     <tr>
       <td class="name">
-        <%= link_to "#{entry[:entry]}", "/#{entry[:relative]}", class: entry[:type].to_s %>
+        <%= link_to "/#{entry[:relative]}", class: entry[:type].to_s do %>
+          <%= fa_icon (entry[:type] == :file ? 'file' : 'folder') %>
+          <span class="filename"><%= entry[:entry] %></span>
+        <% end %>
       </td>
       <td>
         <%= entry[:size] %>
