@@ -5,7 +5,7 @@ class IndexController < ApplicationController
 
   def index
     populate_directory(BASE_DIRECTORY, '')
-    @absolute_path = BASE_DIRECTORY
+    check_path_exist('')
   end
 
   def path

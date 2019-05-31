@@ -1,5 +1,3 @@
-<h1><%= @absolute_path %></h1>
-
 <table>
   <thead>
     <tr>
@@ -13,7 +11,7 @@
   <tbody>
     <% @directory.each do |entry| %>
     <tr>
-      <td>
+      <td class="name">
         <%= link_to "#{entry[:entry]}", "/#{entry[:relative]}", class: entry[:type].to_s %>
       </td>
       <td>

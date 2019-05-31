@@ -22,6 +22,12 @@ a:hover {
 }
 table {
   border-collapse: collapse;
+  white-space: nowrap;
+  width: 100%;
+  text-align: left;
+}
+th {
+  font-size: 14pt;
 }
 th, td {
   padding: 3px 12px;
@@ -29,6 +35,10 @@ th, td {
 }
 .date {
   font-family: 'Courier New', Courier, monospace;
+}
+.name {
+  width: 100%;
+  white-space: normal;
 }
 /* Make the whole cell clickable */
 td a {
