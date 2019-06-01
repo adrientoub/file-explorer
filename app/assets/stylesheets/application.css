@@ -44,6 +44,25 @@ th, td {
 .fa {
   padding: 0 6px 0 0;
 }
+.download {
+  color: white;
+  display: inline-flex;
+  font-size: 14pt;
+  padding: 12px 18px;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+pre {
+  padding: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+h1 {
+  display: inline-flex;
+  margin-right: 20px;
+}
+
 /* Make the whole cell clickable */
 td a {
   display: block;
@@ -71,6 +90,12 @@ tr:hover {
 th, td {
   border-color: #ddd;
 }
+.download {
+  background-color: rgb(60, 75, 209);
+}
+pre {
+  background-color: #d3d3d3;
+}
 
 @media (prefers-color-scheme: dark) {
   body {
@@ -95,5 +120,11 @@ th, td {
   }
   th, td {
     border-color: rgb(138, 138, 138);
+  }
+  .download {
+    background-color: rgb(29, 42, 163);
+  }
+  pre {
+    background-color: #3b3b3b;
   }
 }

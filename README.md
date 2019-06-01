@@ -3,8 +3,7 @@
 ## Overview
 
 This project offers a very simple file explorer to see files in a directory, it
-allows to display small files and download bigger ones. The limit between small
-and big is currently set to 250 kB.
+allows to display and download files.
 
 This also allows to rename and delete files and directories simply by clicking
 a button.

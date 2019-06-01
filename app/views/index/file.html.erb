@@ -1,3 +1,6 @@
+<%= link_to "/#{@relative_path}?download=true", class: 'download' do %>
+  <%= fa_icon 'download' %> Download
+<% end %>
 <pre>
 <%= @file %>
 </pre>

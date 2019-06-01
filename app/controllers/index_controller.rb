@@ -15,7 +15,7 @@ class IndexController < ApplicationController
       populate_directory(absolute_path, "#{params[:path]}/")
       render :index
     elsif File.file?(absolute_path)
-      if File.size(absolute_path) > 250_000
+      if File.size(absolute_path) > 1_000_000 || params[:download]
         send_file absolute_path
       else
         @file = File.read(absolute_path)
@@ -87,6 +87,7 @@ class IndexController < ApplicationController
 
   def check_path_exist(path)
     @absolute_path = safe_expand_path(path)
+    @relative_path = path
     raise ActionController::RoutingError, 'Not Found' unless File.exists?(@absolute_path)
     @absolute_path
   end
