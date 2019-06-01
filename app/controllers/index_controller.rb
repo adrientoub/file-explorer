@@ -6,8 +6,14 @@ class IndexController < ApplicationController
   before_action :set_base_url
 
   def index
-    populate_directory(BASE_DIRECTORY, '')
     check_path_exist('')
+    populate_directory(BASE_DIRECTORY, '')
+  end
+
+  def upload_index
+    upload_file('')
+    populate_directory(BASE_DIRECTORY, '')
+    render :index
   end
 
   def path
@@ -24,6 +30,11 @@ class IndexController < ApplicationController
         render :file, formats: :html
       end
     end
+  end
+
+  def upload
+    upload_file(params[:path])
+    path
   end
 
   def delete
@@ -85,6 +96,17 @@ class IndexController < ApplicationController
       raise ArgumentError, 'Should not be parent of root'
     end
     tested_path
+  end
+
+  def upload_file(path)
+    absolute_path = check_path_exist(path)
+    raise ActionController::ForbiddenError unless File.directory?(absolute_path)
+    input_file = params[:file]
+    if input_file
+      File.open(Rails.root.join(absolute_path, input_file.original_filename), 'wb') do |file|
+        file.write(input_file.read)
+      end
+    end
   end
 
   def check_path_exist(path)

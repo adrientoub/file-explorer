@@ -52,6 +52,10 @@ th, td {
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
+  border: none;
+}
+form {
+  display: inline-block;
 }
 pre {
   padding: 10px;

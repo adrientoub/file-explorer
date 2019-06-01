@@ -1,3 +1,7 @@
+<%= form_tag({}, multipart: true) do %>
+  <%= file_field_tag 'file' %>
+  <input class="download" type="submit" value="Upload" />
+<% end %>
 <table>
   <thead>
     <tr>
