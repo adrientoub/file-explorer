@@ -9,7 +9,22 @@
   </head>
 
   <body>
-    <h1><%= @absolute_path %></h1>
+    <h1 class="breadcrumb">
+      <% if @relative_path.blank? %>
+        <%= @base_url %>
+      <% else %>
+        <a href="/" class="base_url">
+          <%= @base_url %>
+        </a>
+        <span class="separator">/</span>
+      <% end %>
+      <% split = @relative_path.split('/') %>
+      <% split[0..-2].each_with_index do |directory, i| %>
+        <a href="/<%= split[0..i].join('/') %>"><%= directory %></a>
+        <span class="separator">/</span>
+      <% end %>
+      <%= split.last %>
+    </h1>
     <%= yield %>
   </body>
 </html>

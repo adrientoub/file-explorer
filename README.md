@@ -39,9 +39,12 @@ To launch the Rails server you can just use:
 bundle exec rails s -b 0.0.0.0
 ```
 
-You can also specify the folder in which you want it to be launched (defaults
-to the current directory) by setting the BASE\_DIRECTORY environment variable
-before launching the server.
+You can specify the folder in which you want it to be launched (defaults to the
+current directory) by setting the BASE\_DIRECTORY environment variable before
+launching the server.
+
+You can also use the BASE\_URL environment variable to display the correct URL
+at the top in the breadcrumbs.
 
 ```ruby
 BASE_DIRECTORY=PATH_TO_YOUR_DIRECTORY bundle exec rails s -b 0.0.0.0

@@ -3,6 +3,8 @@ class IndexController < ApplicationController
 
   include ActionView::Helpers::NumberHelper
 
+  before_action :set_base_url
+
   def index
     populate_directory(BASE_DIRECTORY, '')
     check_path_exist('')
@@ -90,5 +92,9 @@ class IndexController < ApplicationController
     @relative_path = path
     raise ActionController::RoutingError, 'Not Found' unless File.exists?(@absolute_path)
     @absolute_path
+  end
+
+  def set_base_url
+    @base_url = ENV['BASE_URL'] || 'root'
   end
 end

@@ -62,6 +62,16 @@ h1 {
   display: inline-flex;
   margin-right: 20px;
 }
+.breadcrumb a {
+  color: #0366d6;
+  font-weight: normal;
+}
+.breadcrumb a.base_url {
+  font-weight: bold;
+}
+.separator {
+  padding: 0 10px;
+}
 
 /* Make the whole cell clickable */
 td a {
