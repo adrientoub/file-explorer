@@ -52,8 +52,17 @@ BASE_DIRECTORY=PATH_TO_YOUR_DIRECTORY bundle exec rails s -b 0.0.0.0
 
 ### Using Docker
 
-If you want to launch this project in a Docker it is easy. We provide a
-Dockerfile in the repository to enable the usage of this project.
+#### Rebuild the docker image
+
+If you want to rebuild this project Docker image it is easy. We provide a
+Dockerfile in the repository to enable anyone to create a valid image of this
+project.
+
+```bash
+docker build -t fileexplorer .
+```
+
+#### Launch the docker image
 
 You should create a Rails secret and replace "RAILS_SECRET" by it. To generate
 a Rails secret just launch `bundle exec rails secret` and use the value
@@ -67,10 +76,20 @@ parameter.
 You must launch the following commands as root on Unix or as Administrator on
 Windows:
 
+If you built your own image you can launch it like this:
+
 ```bash
-docker build -t fileexplorer .
-docker create --name fileexplorer -p 127.0.0.1:8689:3000 -e SECRET_KEY_BASE=RAILS_SECRET -e BASE_DIRECTORY=/ fileexplorer  bundle exec rails s -b 0.0.0.0
+docker create --name fileexplorer -p 127.0.0.1:8689:3000 -e SECRET_KEY_BASE=RAILS_SECRET -e BASE_DIRECTORY=/ fileexplorer
 docker start -a fileexplorer
+```
+
+You can alternatively use the public docker image published on
+[Docker Hub](https://hub.docker.com/r/adrientoub/file-explorer) by doing a
+docker pull:
+
+```bash
+docker image pull adrientoub/file-explorer:latest
+docker run -p 127.0.0.1:8689:3000 -e SECRET_KEY_BASE=RAILS_SECRET -e BASE_DIRECTORY=/ -it adrientoub/file-explorer:latest
 ```
 
 ## Tests
