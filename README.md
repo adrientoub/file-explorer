@@ -11,6 +11,8 @@ a button.
 This project was quickly created to simplify the management of files on a web
 server.
 
+![Screenshot](/images/screenshot.png?raw=true)
+
 ## Security
 
 You should protect the access to this application at least by adding a
