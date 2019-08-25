@@ -96,4 +96,8 @@ docker run -p 127.0.0.1:8689:3000 -e SECRET_KEY_BASE=RAILS_SECRET -e BASE_DIRECT
 
 ## Tests
 
-There are no tests for this project currently because of its simplicity.
+To run the tests just run the following command:
+
+```bash
+bundle exec rake
+```
