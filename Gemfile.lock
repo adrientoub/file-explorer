@@ -94,7 +94,7 @@ GEM
     nokogiri (1.13.3)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    puma (5.6.2)
+    puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
@@ -171,7 +171,7 @@ DEPENDENCIES
   byebug
   font-awesome-rails
   listen (~> 3.0.5)
-  puma (~> 5.6.2)
+  puma (~> 5.6.4)
   rails (~> 6.1.0)
   rails-controller-testing
   spring
