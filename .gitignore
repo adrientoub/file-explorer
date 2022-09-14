@@ -16,3 +16,5 @@
 
 # Ignore generated assets.
 public/assets
+
+vendor
