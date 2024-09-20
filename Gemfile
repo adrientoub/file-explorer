@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.7'
 # Use Puma as the app server
-gem 'puma', '~> 5.6.8'
+gem 'puma', '~> 5.6.9'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 4.2.0', require: false
 gem 'font-awesome-rails'
